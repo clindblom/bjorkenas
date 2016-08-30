@@ -1,0 +1,9 @@
+<?php
+	
+	$db = array(
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'Cmc97msl',
+	'database' => 'bjorkenas'); 
+
+?>
