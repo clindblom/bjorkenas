@@ -11,7 +11,7 @@
 		$material_SQLselect_Query = mysqli_query($dbConnected, $material_SQLselect); 	
 	
 		echo '<h2>Ändra information om material</h2>';
-		$row = mysqli_fetch_array($material_SQLselect_Query, MYSQL_ASSOC);
+		$row = mysqli_fetch_array($material_SQLselect_Query, MYSQLI_ASSOC);
 
 		$id = $row['material_id'];
 		$name = $row['article_name'];

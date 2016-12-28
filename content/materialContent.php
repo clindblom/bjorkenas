@@ -33,7 +33,7 @@
 		echo '</thead>';
 		echo '<tbody>';
 	
-		while ($row = mysqli_fetch_array($material_SQLselect_Query, MYSQL_ASSOC)) {
+		while ($row = mysqli_fetch_array($material_SQLselect_Query, MYSQLI_ASSOC)) {
 			
 			$id = $row['material_id'];
 			$name = $row['article_name'];

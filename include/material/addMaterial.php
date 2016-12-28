@@ -14,7 +14,7 @@
 		$project_SQLselect = "SELECT project_order_nr FROM project WHERE project_id='".$addMaterialProjectId."'";
 		$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect);
 		
-		$projectRow = mysqli_fetch_array($project_SQLselect_Query, MYSQL_ASSOC);
+		$projectRow = mysqli_fetch_array($project_SQLselect_Query, MYSQLI_ASSOC);
 
 		$projectOrderNo = $projectRow['project_order_nr'];
 	

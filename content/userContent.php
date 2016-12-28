@@ -18,7 +18,11 @@
 		echo '<h2>Användare</h2>';
 		echo '<form id="createUserForm" name="createUserForm" action="index.php" method="get">
 					<input type="hidden" name="content" value="newUser">
-					<input class="btn btn-default" type="submit"  value="Lägg till användare" />
+					<input class="btn btn-default" style="float:left; margin-right:10px;" type="submit"  value="Lägg till användare" />
+				</form>';
+		echo '<form id="logoutForm" name="logoutForm" action="index.php" method="post">
+					<input type="hidden" name="status" value="logout">
+					<input class="btn btn-default" id="logoutButton" type="submit" value="Logga ut" />
 				</form>';
 		echo '<table class="table" id="userTable">';	
 		echo '<thead>';
@@ -33,7 +37,7 @@
 			echo '</tr>';	
 		echo '</thead>';
 	
-		while ($row = mysqli_fetch_array($user_SQLselect_Query, MYSQL_ASSOC)) {
+		while ($row = mysqli_fetch_array($user_SQLselect_Query, MYSQLI_ASSOC)) {
 			
 			$id = $row['id'];
 			$name = $row['name'];

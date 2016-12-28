@@ -9,7 +9,7 @@
 			$sqlQueryStatement .= "WHERE username = '".$username."' ";	
 
 			$sqlQuery = mysqli_query($dbConnected, $sqlQueryStatement); 	
-			while ($row = mysqli_fetch_array($sqlQuery, MYSQL_ASSOC)) {
+			while ($row = mysqli_fetch_array($sqlQuery, MYSQLI_ASSOC)) {
 			    $userID = $row['ID'];
 			    $passwordRetrieved = $row['password'];
 			}
@@ -41,7 +41,7 @@
 		$sqlQuery = mysqli_query($dbConnected, $sqlQueryStatement);
 		
 		$users = array();
-		while ($row = mysqli_fetch_array($sqlQuery, MYSQL_ASSOC)) {
+		while ($row = mysqli_fetch_array($sqlQuery, MYSQLI_ASSOC)) {
 			$users[$row['id']] = $row['username'];
 		}
 		
@@ -60,7 +60,7 @@
 		$sqlQuery = mysqli_query($dbConnected, $sqlQueryStatement);
 		
 		$customer = array();
-		while($row = mysqli_fetch_array($sqlQuery, MYSQL_ASSOC)) {
+		while($row = mysqli_fetch_array($sqlQuery, MYSQLI_ASSOC)) {
 			//array_push($customer, ($row['customer_id'] => $row['customer_name']));
 			$customer[$row['customer_id']] = $row['customer_company'];
 		}

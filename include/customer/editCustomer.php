@@ -12,7 +12,7 @@
 	
 		echo '<h2>Ändra information om kund</h2>';
 		
-		$row = mysqli_fetch_array($customer_SQLselect_Query, MYSQL_ASSOC);
+		$row = mysqli_fetch_array($customer_SQLselect_Query, MYSQLI_ASSOC);
 
 		$id = $row['customer_id'];
 		$name = $row['customer_name'];

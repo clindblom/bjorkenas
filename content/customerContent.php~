@@ -18,7 +18,11 @@
 		echo '<h2>Kunder</h2>';
 		echo '<form id="createCustomerForm" name="createCustomerForm" action="index.php" method="get">
 					<input type="hidden" name="content" value="newCustomer">
-					<input class="btn btn-default" type="submit"  value="Lägg till kund" />
+					<input class="btn btn-default" type="submit"  value="Lägg till kund" style="float:left; margin-right:10px"; />
+				</form>';
+		echo '<form name="showCustomerForm" name="showCustomerForm" action="index.php" method="get">
+					<input type="hidden" name=content value="showCustomer">
+					<input class="btn btn-default" type="submit"  value="Visa kund"/>
 				</form>';
 		echo '<table class="table" id="customerTable">';	
 	

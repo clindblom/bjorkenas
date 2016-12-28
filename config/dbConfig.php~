@@ -1,9 +1,9 @@
 <?php
 	
 	$db = array(
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'Cmc97msl',
-	'database' => 'bjorkenas'); 
+	'hostname' => 'bjorkenas.org.mysql',
+	'username' => 'bjorkenas_org',
+	'password' => 'Limpan321',
+	'database' => 'bjorkenas_org'); 
 
 ?>

@@ -16,7 +16,7 @@
 			$rendering .= '<option value="0" selected="selected">';
 			$rendering .= '..välj material..</option>';
 		 	
-					while ($row = mysqli_fetch_array($material_SQLselect_Query, MYSQL_ASSOC)) {
+					while ($row = mysqli_fetch_array($material_SQLselect_Query, MYSQLI_ASSOC)) {
 					    $ID = $row['material_id'];
 					    $name = $row['article_name'];
 	

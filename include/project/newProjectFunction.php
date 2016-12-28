@@ -16,7 +16,7 @@
 			$rendering .= '<option value="0" selected="selected">';
 			$rendering .= '..välj en kund..</option>';
 		 	
-					while ($row = mysqli_fetch_array($customer_SQLselect_Query, MYSQL_ASSOC)) {
+					while ($row = mysqli_fetch_array($customer_SQLselect_Query, MYSQLI_ASSOC)) {
 					    $ID = $row['customer_id'];
 					    $company = $row['customer_company'];
 	
@@ -53,7 +53,7 @@
 			$rendering .= '<option value="0" selected="selected">';
 			$rendering .= '..välj en användare..</option>';
 		 	
-					while ($row = mysqli_fetch_array($user_SQLselect_Query, MYSQL_ASSOC)) {
+					while ($row = mysqli_fetch_array($user_SQLselect_Query, MYSQLI_ASSOC)) {
 					    $ID = $row['id'];
 					    $name = $row['username'];
 	

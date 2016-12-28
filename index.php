@@ -101,6 +101,12 @@
 				    case "editCustomer":
 				        $contentFile = "include/customer/editCustomer.php";
 				        break;
+				    case "reportTime":
+				        $contentFile = "include/timeReport/chooseWeekTR.php";
+				        break;
+				    case "chosenWeek":
+				        $contentFile = "include/timeReport/timeReportForm.php";
+				        break;
 				}	// End of switch									
 							
 			}
@@ -135,7 +141,7 @@
 	
 	</head>
 	<body>
-		<div class="container">
+		<div class="container" style="width:70%; margin: 0% 15% 0% 15%">
 			
 				<?php
 				if (file_exists($menuFile) || file_exists($mobileMenuFile)) {

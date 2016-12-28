@@ -38,7 +38,7 @@
 		echo '</thead>';
 		echo '<tbody>';
 	
-		while ($row = mysqli_fetch_array($user_SQLselect_Query, MYSQL_ASSOC)) {
+		while ($row = mysqli_fetch_array($user_SQLselect_Query, MYSQLI_ASSOC)) {
 			
 			$id = $row['customer_id'];
 			$name = $row['customer_name'];

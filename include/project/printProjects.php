@@ -18,7 +18,7 @@
 		$projectData = array();
 		
 		$projectTempArray = array();
-		while ($projectRow = mysqli_fetch_array($project_SQLselect_Query, MYSQL_ASSOC)) {
+		while ($projectRow = mysqli_fetch_array($project_SQLselect_Query, MYSQLI_ASSOC)) {
 			$orderNo = $projectRow['project_order_nr'];
 			$address = $projectRow['project_address'];
 			// $startDate = $projectRow['project_start_date'];
@@ -31,13 +31,13 @@
 			//Customer
 			$customer_SQLselect = "SELECT customer_company FROM customer WHERE customer_id='".$customer."'";
 			$customer_SQLselect_Query = mysqli_query($dbConnected, $customer_SQLselect);
-			$cRow = mysqli_fetch_array($customer_SQLselect_Query, MYSQL_ASSOC);
+			$cRow = mysqli_fetch_array($customer_SQLselect_Query, MYSQLI_ASSOC);
 			$customerCompany = $cRow['customer_company'];
 			
 /*			//User
 			$user_SQLselect = "SELECT name FROM user WHERE id='".$user."'";
 			$user_SQLselect_Query = mysqli_query($dbConnected, $user_SQLselect);
-			$uRow = mysqli_fetch_array($user_SQLselect_Query, MYSQL_ASSOC);
+			$uRow = mysqli_fetch_array($user_SQLselect_Query, MYSQLI_ASSOC);
 			$userName = $uRow['name'];
 */			
 			

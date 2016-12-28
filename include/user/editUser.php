@@ -11,7 +11,7 @@
 		$user_SQLselect = 'SELECT * FROM user WHERE id="'.$userId.'"';
 		$user_SQLselect_Query = mysqli_query($dbConnected, $user_SQLselect); 	
 	
-		$row = mysqli_fetch_array($user_SQLselect_Query, MYSQL_ASSOC);
+		$row = mysqli_fetch_array($user_SQLselect_Query, MYSQLI_ASSOC);
 
 		$id = $row['id'];
 		$name = $row['name'];

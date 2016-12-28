@@ -18,6 +18,9 @@
 		}
 		
 		echo '<h2>Välj ett projekt</h2>';
+		echo '<form name="blankInvoiceForm" target="_blank" action="include/invoice/blankInvoice.php" method="post">
+						<input class="btn btn-default" type="submit" value="Blankt underlag">
+				</form>';
 		
 		echo '<table class="table" id="invoiceProjectTable">';	
 		

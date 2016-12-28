@@ -57,10 +57,11 @@
 		$customerCompany = $cRow['customer_company'];
 		
 		//User
-		$user_SQLselect = "SELECT name FROM user WHERE id='".$user."'";
+		$user_SQLselect = "SELECT name, company FROM user WHERE id='".$user."'";
 		$user_SQLselect_Query = mysqli_query($dbConnected, $user_SQLselect);
 		$uRow = mysqli_fetch_array($user_SQLselect_Query, MYSQL_ASSOC);
 		$userName = $uRow['name'];
+		$userCompany = $uRow['company'];
 
 		//Set the project as finished		
 		$project_SQLupdate = "UPDATE project SET finished=1 WHERE project_id='".$projectId."'";
@@ -115,7 +116,7 @@
 		$pdf->Cell(45,15,utf8_decode('Omfattning av arbete:'),0,0);
 		$pdf->MultiCell(125,15,utf8_decode($description),0,1);
 		$pdf->Cell(10);
-		$pdf->Cell(50,15,utf8_decode('Utfört av:  '.$userName),0,1);
+		$pdf->Cell(50,15,utf8_decode('Utfört av:  '.$userName.' '.$userCompany),0,1);
 		if($startDate != '0000-00-00') {
 			$pdf->Cell(10);
 			$pdf->Cell(50,15,utf8_decode('Start datum:  '.$startDate),0,1);

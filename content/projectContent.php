@@ -41,7 +41,7 @@
 		echo '</thead>';
 		echo '<tbody>';
 	
-			while ($row = mysqli_fetch_array($project_SQLselect_Query, MYSQL_ASSOC)) {
+			while ($row = mysqli_fetch_array($project_SQLselect_Query, MYSQLI_ASSOC)) {
 				
 				$id = $row['project_id'];
 				$orderNo = $row['project_order_nr'];

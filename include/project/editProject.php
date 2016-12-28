@@ -13,7 +13,7 @@
 		include('newProjectFunction.php');
 	
 		echo '<h2>Ändra information om projekt</h2>';
-		$row = mysqli_fetch_array($project_SQLselect_Query, MYSQL_ASSOC);
+		$row = mysqli_fetch_array($project_SQLselect_Query, MYSQLI_ASSOC);
 
 		$id = $row['project_id'];
 		$orderNo = $row['project_order_nr'];

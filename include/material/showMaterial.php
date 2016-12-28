@@ -13,7 +13,7 @@
 		
 		$project_SQLselect = "SELECT project_order_nr FROM project WHERE project_id='".$projectId."'";
 		$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect);
-		$projectRow = mysqli_fetch_array($project_SQLselect_Query, MYSQL_ASSOC);
+		$projectRow = mysqli_fetch_array($project_SQLselect_Query, MYSQLI_ASSOC);
 		$projectOrderNo = $projectRow['project_order_nr'];
 		
 		$material_used_SQLselect = "SELECT * FROM material_used WHERE project_id='".$projectId."'";
@@ -38,7 +38,7 @@
 		echo '</thead>';
 		echo '<tbody>';
 	
-		while ($rowMaterialUsed = mysqli_fetch_array($material_used_SQLselect_Query, MYSQL_ASSOC)) {
+		while ($rowMaterialUsed = mysqli_fetch_array($material_used_SQLselect_Query, MYSQLI_ASSOC)) {
 			
 			$materialUsedId = $rowMaterialUsed['material_used_id'];
 			$materialId = $rowMaterialUsed['material'];
@@ -47,7 +47,7 @@
 			$material_SQLselect = "SELECT * FROM material WHERE material_id='".$materialId."'";
 			$material_SQLselect_Query = mysqli_query($dbConnected, $material_SQLselect);			
 			
-			while($rowMaterial = mysqli_fetch_array($material_SQLselect_Query, MYSQL_ASSOC)) {
+			while($rowMaterial = mysqli_fetch_array($material_SQLselect_Query, MYSQLI_ASSOC)) {
 				
 				$materialName = $rowMaterial['article_name'];
 				$materialNumber = $rowMaterial['article_number'];

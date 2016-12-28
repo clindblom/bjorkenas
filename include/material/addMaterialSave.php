@@ -20,7 +20,7 @@
 			$dbMaterialId = array(0 => 0);			
 			$dbQuantity = array(0 => 0);
 			
-			while($rowMaterialUsed = mysqli_fetch_array($material_used_SQLselect_Query, MYSQL_ASSOC)) {
+			while($rowMaterialUsed = mysqli_fetch_array($material_used_SQLselect_Query, MYSQLI_ASSOC)) {
 				array_push($dbMaterialId, $rowMaterialUsed['material']);
 				array_push($dbQuantity, $rowMaterialUsed['quantity']);
 			}

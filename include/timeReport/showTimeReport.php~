@@ -1,0 +1,91 @@
+<?php
+	include('config/dbConfig.php'); 
+	include('include/timeReport/timeReportFunction.php');
+	
+	$dbSuccess = false;
+	$dbConnected = mysqli_connect($db['hostname'],$db['username'],$db['password'],$db['database']);
+	mysqli_set_charset($dbConnected, 'utf8');
+	
+	if($dbConnected) {
+		$showOnly = false;		
+		
+		$project_SQLselect = "SELECT * FROM project";
+		$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect); 	
+	if ($detect->isMobile()) {
+			echo '<style>#reportTimeLink {background: #A0A0A0;}</style>';		
+		} else {
+			echo '<style>#reportTimeLink {background: black;}</style>';
+		}
+	}
+	
+	$timezone = date_default_timezone_get();
+	$ddate = date('m/d/Y h:i:s a', time());
+	$date = new DateTime($ddate);
+	$week = $date->format("yW");
+
+	echo '<h2>Tidsrapportering vecka '.$week.'</h2>';
+		echo '<form id="createTimeReportForm" name="createTimeReportForm" action="include/timeReport/newTimeReportSave.php" method="post">
+					<input type="hidden" name="weekNumber" value="'.$week.'">
+					<input class="btn btn-default" type="submit"  value="Rapportera" style="float:left; margin-right:10px;"/>';
+				
+		/* echo '<form id="" name="" action="index.php" method="get">
+					<input type="hidden" name="content" value="">
+					<input class="btn btn-default" type="submit"  value="Tidigre rapporter" style="float:left; margin-right:10px;"/>
+				</form>'; */
+		
+		echo '<table class="table" id="reportTimeTable">';
+		
+			echo '<thead>';
+				echo '<tr>';
+					echo '<th>Projekt</th>'; 
+					echo '<th colspan=2>Måndag</th>'; 
+					echo '<th colspan=2>Tisdag</th>';
+					echo '<th colspan=2>Onsdag</th>';
+					echo '<th colspan=2>Torsdag</th>';
+					echo '<th colspan=2>Fredag</th>';
+					echo '<th colspan=2>Lördag</th>';
+					echo '<th colspan=2>Söndag</th>';
+					echo '<th colspan=2></th>';
+					echo '<th colspan=2></th>';
+				echo '</tr>';
+			echo '</thead>';
+			echo '<tbody>';
+			
+			$i = 0;
+			while ($row = mysqli_fetch_array($project_SQLselect_Query, MYSQLI_ASSOC)) {
+				$orderNo = $row['project_order_nr'];
+				$orderNoArray[$i] = $orderNo;
+				$i++;
+			}
+			
+			for($t=0; $t<8; $t++) {
+				echo '<tr>';
+			  				
+			  		echo '<td style="width:10%">
+								<input type="hidden" class="form-control" ><div>'.projectDropdown('', $t).'</div></input>
+			  				</td>';
+			  				
+					echo '<td><input type="text" class="form-control" id="montime'.$t.'" name="montime'.$t.'" placeholder="Tid"></td>';
+					echo '<td><input type="text" class="form-control" id="montrip'.$t.'" name="montrip'.$t.'" placeholder="Resa"></td>';
+					echo '<td><input type="text" class="form-control" id="tuetime'.$t.'" name="tuetime'.$t.'" placeholder="Tid"></td>';
+					echo '<td><input type="text" class="form-control" id="tuetrip'.$t.'" name="tuetrip'.$t.'" placeholder="Resa"></td>';
+					echo '<td><input type="text" class="form-control" id="wentime'.$t.'" name="wentime'.$t.'" placeholder="Tid"></td>';
+					echo '<td><input type="text" class="form-control" id="wentrip'.$t.'" name="wentrip'.$t.'" placeholder="Resa"></td>';
+					echo '<td><input type="text" class="form-control" id="thutime'.$t.'" name="thutime'.$t.'" placeholder="Tid"></td>';
+					echo '<td><input type="text" class="form-control" id="thutrip'.$t.'" name="thutrip'.$t.'" placeholder="Resa"></td>';
+					echo '<td><input type="text" class="form-control" id="fritime'.$t.'" name="fritime'.$t.'" placeholder="Tid"></td>';
+					echo '<td><input type="text" class="form-control" id="fritrip'.$t.'" name="fritrip'.$t.'" placeholder="Resa"></td>';
+					echo '<td><input type="text" class="form-control" id="sattime'.$t.'" name="sattime'.$t.'" placeholder="Tid"></td>';
+					echo '<td><input type="text" class="form-control" id="sattrip'.$t.'" name="sattrip'.$t.'" placeholder="Resa"></td>';
+					echo '<td><input type="text" class="form-control" id="suntime'.$t.'" name="suntime'.$t.'" placeholder="Tid"></td>';
+					echo '<td><input type="text" class="form-control" id="suntrip'.$t.'" name="suntrip'.$t.'" placeholder="Resa"></td>';
+					echo '</form>';
+				
+				echo '</tr>';
+			}			
+				
+			echo '</body>';
+		
+		echo '</table>';
+			
+?>

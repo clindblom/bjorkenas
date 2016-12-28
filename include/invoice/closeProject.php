@@ -16,7 +16,7 @@
 		$project_SQLselect = "SELECT * FROM project WHERE project_id='".$projectId."'";
 		$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect);
 		
-		$projectRow = mysqli_fetch_array($project_SQLselect_Query, MYSQL_ASSOC);
+		$projectRow = mysqli_fetch_array($project_SQLselect_Query, MYSQLI_ASSOC);
 		$id = $projectRow['project_id'];
 		$orderNo = $projectRow['project_order_nr'];
 		$address = $projectRow['project_address'];
@@ -35,13 +35,13 @@
 		$materialUsed_SQLselect_Query = mysqli_query($dbConnected, $materialUsed_SQLselect);
 		
 		$materialUsedArray = array();
-		while($muRow = mysqli_fetch_array($materialUsed_SQLselect_Query, MYSQL_ASSOC)) {
+		while($muRow = mysqli_fetch_array($materialUsed_SQLselect_Query, MYSQLI_ASSOC)) {
 			$material = $muRow['material'];
 			$quantity = $muRow['quantity'];
 			
 			$material_SQLselect = "SELECT article_name, article_number FROM material WHERE material_id='".$material."'";
 			$material_SQLselect_Query = mysqli_query($dbConnected, $material_SQLselect);
-			$mRow = mysqli_fetch_array($material_SQLselect_Query, MYSQL_ASSOC);
+			$mRow = mysqli_fetch_array($material_SQLselect_Query, MYSQLI_ASSOC);
 			$materialName = $mRow['article_name'];
 			$materialNumber = $mRow['article_number'];
 			
@@ -53,13 +53,13 @@
 		//Customer
 		$customer_SQLselect = "SELECT customer_company FROM customer WHERE customer_id='".$customer."'";
 		$customer_SQLselect_Query = mysqli_query($dbConnected, $customer_SQLselect);
-		$cRow = mysqli_fetch_array($customer_SQLselect_Query, MYSQL_ASSOC);
+		$cRow = mysqli_fetch_array($customer_SQLselect_Query, MYSQLI_ASSOC);
 		$customerCompany = $cRow['customer_company'];
 		
 		//User
 		$user_SQLselect = "SELECT name, company FROM user WHERE id='".$user."'";
 		$user_SQLselect_Query = mysqli_query($dbConnected, $user_SQLselect);
-		$uRow = mysqli_fetch_array($user_SQLselect_Query, MYSQL_ASSOC);
+		$uRow = mysqli_fetch_array($user_SQLselect_Query, MYSQLI_ASSOC);
 		$userName = $uRow['name'];
 		$userCompany = $uRow['company'];
 
