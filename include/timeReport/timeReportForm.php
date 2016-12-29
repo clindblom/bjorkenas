@@ -2,6 +2,7 @@
 	include('config/dbConfig.php'); 
 	include('include/timeReport/timeReportFunction.php');
 	
+	$user = $_COOKIE['userID'];
 	$week = $_GET['selectedWeek'];
 	$year = $_GET['selectedYear'];
 	$weekNoDB = 0;
@@ -16,7 +17,7 @@
 	$project_SQLselect = "SELECT * FROM project";
 	$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect);
 	
-	$tr_SQLselect = "SELECT * FROM time_report where tr_week='".$year.''.$week."'";
+	$tr_SQLselect = "SELECT * FROM time_report where tr_week=".$year.''.$week." AND tr_user=".$user;
 	$tr_SQLselect_Query = mysqli_query($dbConnected, $tr_SQLselect); 	
 	
 	if ($detect->isMobile()) {
@@ -33,6 +34,7 @@
 		$weekNoDB = $tr_row['tr_week'];
 		$orderNodb = $tr_row['tr_project'];
 		$orderNoArraydb[$j] = $orderNodb;
+		$userID = $tr_row['tr_user'];
 		${"tr_id".$j} = $tr_row['tr_id'];
 		${"montime".$j} = $tr_row['tr_montime'];
 		${"montrip".$j} = $tr_row['tr_montrip'];
