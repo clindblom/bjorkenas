@@ -38,9 +38,6 @@
 			$tr_SQLupdate .= " tr_sattime=".${'sattime'.$s}.", tr_sattrip=".${'sattrip'.$s}.", tr_suntime=".${'suntime'.$s}.", tr_suntrip=".${'suntrip'.$s};	
 			$tr_SQLupdate .= " WHERE tr_id=".${'tr_id'.$s};
 			
-			
-			echo $tr_SQLupdate.'<br/>';
-			
 			$tr_SQLupdate_query = mysqli_query($dbConnected, $tr_SQLupdate);			
 
 			header("Location: ../../index.php?content=chosenWeek&selectedWeek=".$week."&selectedYear=".$year);
