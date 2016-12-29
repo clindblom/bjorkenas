@@ -8,7 +8,8 @@
 					<li role="presentation"><a role="menuitem" tabindex="-1" id="cILink" href="index.php?content=createInvoice">Skapa underlag</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" id="cPLink" href="index.php?content=completedProjects">Avslutade projekt</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" id="materialLink" href="index.php?content=handleMaterial">Hantera material</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" id="customerLink" href="index.php?content=handleCustomer">Hantera kunder</a></li>';
+					<li role="presentation"><a role="menuitem" tabindex="-1" id="customerLink" href="index.php?content=handleCustomer">Hantera kunder</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" id="customerLink" href="index.php?content=reportTime">Rapportera tid</a></li>';
 			echo '<li role="presentation">';
 						include('include/logInAndOut/logoutForm.php');
 			echo	'</li>';
