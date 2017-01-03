@@ -152,6 +152,8 @@
 			$sumSatTrip = 0;
 			$sumSunTime = 0;
 			$sumSunTrip = 0;
+			$sumAllTime = 0;
+			$sumAllTrip = 0;
 			
 			for($e=0; $e<8; $e++) {
 				$sumMonTime = $sumMonTime + ${"montime".$e};
@@ -170,6 +172,9 @@
 				$sumSunTrip = $sumSunTrip + ${"suntrip".$e};
 			}
 			
+			$sumAllTime = $sumMonTime + $sumTueTime + $sumWenTime + $sumThuTime + $sumFriTime + $sumSatTime + $sumSunTime;
+			$sumAllTrip = $sumMonTrip + $sumTueTrip + $sumWenTrip + $sumThuTrip + $sumFriTrip + $sumSatTrip + $sumSunTrip;
+			
 			echo '<tfoot>';
 				echo '<tr>';
 					echo '<td>Summa</td>';
@@ -187,6 +192,14 @@
 					echo '<td>'.$sumSatTrip.'</td>';
 					echo '<td>'.$sumSunTime.'</td>';
 					echo '<td>'.$sumSunTrip.'</td>';
+				echo '</tr>';
+				echo '<tr>';
+					echo '<td colspan=2>Total tid</td>';
+					echo '<td>'.$sumAllTime.'</td>';
+				echo '<tr>';
+				echo '</tr>';
+					echo '<td colspan=2>Alla resor</td>';
+					echo '<td>'.$sumAllTrip.'</td>';
 				echo '</tr>';
 			echo '</tfoot>';
 					
