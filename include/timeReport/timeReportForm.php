@@ -131,7 +131,6 @@
 					echo '<td><input type="text" class="form-control" id="sattrip'.$t.'" name="sattrip'.$t.'" value="'.${"sattrip".$t}.'"></td>';
 					echo '<td><input type="text" class="form-control" id="suntime'.$t.'" name="suntime'.$t.'" value="'.${"suntime".$t}.'"></td>';
 					echo '<td><input type="text" class="form-control" id="suntrip'.$t.'" name="suntrip'.$t.'" value="'.${"suntrip".$t}.'"></td>';
-					echo '</form>';
 				
 				echo '</tr>';
 			}			
@@ -204,6 +203,40 @@
 			echo '</tfoot>';
 					
 		echo '</table>';
+		echo '</form>';
+		
+		echo '<form name="nextnWeek" action="index.php" method="get">';
+		echo '<input name="content" type="hidden" value="chosenWeek">';
+			if($week == 52) {
+				$nextWeek = 1;
+				$nextYear = $year+1;
+			} else {
+				$nextWeek = $week+1;
+				$nextYear = $year;
+			}
+			if($nextWeek>0 && $nextWeek<10) {
+				$nextWeek = '0'.$nextWeek;
+			}
+			echo '<input type="hidden" name="selectedWeek" value="'.$nextWeek.'">';
+			echo '<input type="hidden" name="selectedYear" value="'.$nextYear.'">';
+			echo '<input class="btn btn-default" type="submit"  value="Nästa v" style="float:right; margin-right:10px;"/>';
+		echo '</form>';
+		echo '<form name="lastWeek" action="index.php" method="get">';
+		echo '<input name="content" type="hidden" value="chosenWeek">';
+			if($week == 1) {
+				$lastWeek = 52;
+				$lastYear = $year-1;
+			} else {
+				$lastWeek = $week-1;
+				$lastYear = $year;
+			}
+			if($lastWeek>0 && $lastWeek<10) {
+				$lastWeek = '0'.$lastWeek;
+			}
+			echo '<input type="hidden" name="selectedWeek" value="'.$lastWeek.'">';
+			echo '<input type="hidden" name="selectedYear" value="'.$lastYear.'">';
+			echo '<input class="btn btn-default" type="submit"  value="Förra v" style="float:right; margin-right:10px;"/>';
+		echo '</form>';
 		
 		} else {
 			
@@ -259,7 +292,6 @@
 					echo '<td><input type="text" class="form-control" id="sattrip'.$t.'" name="sattrip'.$t.'" placeholder="Resa"></td>';
 					echo '<td><input type="text" class="form-control" id="suntime'.$t.'" name="suntime'.$t.'" placeholder="Tid"></td>';
 					echo '<td><input type="text" class="form-control" id="suntrip'.$t.'" name="suntrip'.$t.'" placeholder="Resa"></td>';
-					echo '</form>';
 				
 				echo '</tr>';
 			}			
@@ -284,8 +316,51 @@
 					echo '<td>0</td>';
 					echo '<td>0</td>';
 				echo '</tr>';
+				echo '<tr>';
+					echo '<td colspan=2>Total tid</td>';
+					echo '<td>0</td>';
+				echo '<tr>';
+				echo '</tr>';
+					echo '<td colspan=2>Alla resor</td>';
+					echo '<td>0</td>';
+				echo '</tr>';
 			echo '</tfoot>';
 					
 		echo '</table>';
+		echo '</form>';
+		
+		echo '<form name="nextnWeek" action="index.php" method="get">';
+		echo '<input name="content" type="hidden" value="chosenWeek">';
+			if($week == 52) {
+				$nextWeek = 1;
+				$nextYear = $year+1;
+			} else {
+				$nextWeek = $week+1;
+				$nextYear = $year;
+			}
+			if($nextWeek>0 && $nextWeek<10) {
+				$nextWeek = '0'.$nextWeek;
+			}
+			echo '<input type="hidden" name="selectedWeek" value="'.$nextWeek.'">';
+			echo '<input type="hidden" name="selectedYear" value="'.$nextYear.'">';
+			echo '<input class="btn btn-default" type="submit"  value="Nästa v" style="float:right; margin-right:10px;"/>';
+		echo '</form>';
+		echo '<form name="lastWeek" action="index.php" method="get">';
+		echo '<input name="content" type="hidden" value="chosenWeek">';
+			if($week == 1) {
+				$lastWeek = 52;
+				$lastYear = $year-1;
+			} else {
+				$lastWeek = $week-1;
+				$lastYear = $year;
+			}
+			if($lastWeek>0 && $lastWeek<10) {
+				$lastWeek = '0'.$lastWeek;
+			}
+			echo '<input type="hidden" name="selectedWeek" value="'.$lastWeek.'">';
+			echo '<input type="hidden" name="selectedYear" value="'.$lastYear.'">';
+			echo '<input class="btn btn-default" type="submit"  value="Förra v" style="float:right; margin-right:10px;"/>';
+		echo '</form>';
+	
 		}
 ?>

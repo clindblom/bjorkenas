@@ -63,7 +63,9 @@
 		$rendering .= '<option value="'.$weekDD.'" selected="selected">-'.$weekDD.'-</option>';
 	 	
 				for ($i=1; $i<53; $i++) {
-
+					if($i>0 && $i<10) {
+						$i = '0'.$i;
+					}
 				    if ($w == $i) { 
 				    	$selectedFlag = " selected";
 				    } else { 
