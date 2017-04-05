@@ -6,6 +6,7 @@
 	$week = $_GET['selectedWeek'];
 	$year = $_GET['selectedYear'];
 	$weekNoDB = 0;
+	$noOfRows = 0;
 	
 	$dbSuccess = false;
 	$dbConnected = mysqli_connect($db['hostname'],$db['username'],$db['password'],$db['database']);
@@ -53,11 +54,38 @@
 		$j++;
 	}
 	
+	if ($_GET["Add"] == 1) {
+		$noOfRows = $j + 4;
+		for ($j2=$j; $j2<$j+4; $j2++) {
+			$orderNoArraydb[$j2] = 0;
+			${"tr_id".$j2} = $tr_row['tr_id'];
+			${"montime".$j2} = 0;
+			${"montrip".$j2} = 0;
+			${"tuetime".$j2} = 0;
+			${"tuetrip".$j2} = 0;
+			${"wentime".$j2} = 0;
+			${"wentrip".$j2} = 0;
+			${"thutime".$j2} = 0;
+			${"thutrip".$j2} = 0;
+			${"fritime".$j2} = 0;
+			${"fritrip".$j2} = 0;
+			${"sattime".$j2} = 0;
+			${"sattrip".$j2} = 0;
+			${"suntime".$j2} = 0;
+			${"suntrip".$j2} = 0;
+		}
+	} elseif ($_GET["Add"] == 0) {
+		$noOfRows = $j;
+	}
+
 	if($weekNoDB == $year.''.$week) {
 	
 		echo '<form id="createTimeReportForm" name="updateTimeReportForm" action="include/timeReport/timeReportUpdate.php" method="post">
+					<input type="hidden" name="weekNumber" value="'.$year.''.$week.'">
 					<input type="hidden" name="week" value="'.$week.'">
 					<input type="hidden" name="year" value="'.$year.'">
+					<input type="hidden" name="rows" value="'.$noOfRows.'">
+					<input type="hidden" name="added" value="'.$_GET["Add"].'">
 					<input class="btn btn-default" type="submit"  value="Rapportera" style="float:left; margin-right:10px;"/>';
 		
 		echo '<table class="table" id="reportTimeTable">';
@@ -103,10 +131,11 @@
 					echo '<td>Resa</td>';		
 				echo '</tr>';		
 			
-			for($t=0; $t<8; $t++) {
+			for($t=0; $t<$noOfRows; $t++) {
 				echo '<tr>';
 
-			  		if($orderNodb=0) {
+			  		//if($orderNodb == 0) {
+				  	if ($orderNoArraydb[$t] == 0) {
 				  		echo '<td style="width:10%">
 									<input type="hidden" class="form-control" ><div>'.projectDropdown('', $t).'</div></input>
 				  				</td>';
@@ -154,7 +183,7 @@
 			$sumAllTime = 0;
 			$sumAllTrip = 0;
 			
-			for($e=0; $e<8; $e++) {
+			for($e=0; $e<$noOfRows; $e++) {
 				$sumMonTime = $sumMonTime + ${"montime".$e};
 				$sumMonTrip = $sumMonTrip + ${"montrip".$e};
 				$sumTueTime = $sumTueTime + ${"tuetime".$e};
@@ -205,6 +234,7 @@
 		echo '</table>';
 		echo '</form>';
 		
+		echo '<div style="padding-bottom:25px">';
 		echo '<form name="nextnWeek" action="index.php" method="get">';
 		echo '<input name="content" type="hidden" value="chosenWeek">';
 			if($week == 52) {
@@ -219,6 +249,7 @@
 			}
 			echo '<input type="hidden" name="selectedWeek" value="'.$nextWeek.'">';
 			echo '<input type="hidden" name="selectedYear" value="'.$nextYear.'">';
+			echo '<input type="hidden" name="Add" value="0">';
 			echo '<input class="btn btn-default" type="submit"  value="Nästa v" style="float:right; margin-right:10px;"/>';
 		echo '</form>';
 		echo '<form name="lastWeek" action="index.php" method="get">';
@@ -235,10 +266,19 @@
 			}
 			echo '<input type="hidden" name="selectedWeek" value="'.$lastWeek.'">';
 			echo '<input type="hidden" name="selectedYear" value="'.$lastYear.'">';
+			echo '<input type="hidden" name="Add" value="0">';
 			echo '<input class="btn btn-default" type="submit"  value="Förra v" style="float:right; margin-right:10px;"/>';
 		echo '</form>';
+
+		echo '<form id="moreRowsForm" name="moreRowsForm" action="include/timeReport/moreRowsTimeReport.php" method="post">
+					<input type="hidden" name="weekNumber" value="'.$year.''.$week.'">
+					<input type="hidden" name="week" value="'.$week.'">
+					<input type="hidden" name="year" value="'.$year.'">
+					<input class="btn btn-default" type="submit"  value="Fler rader" style="float:right; margin-right:10px;" onclick="return confirm(\'Har du sparat dina ändringar genom att trycka Rapportera?\')"/></form>';
+
+		echo '</div>';
 		
-		} else {
+		} else { // Inga värden i databasen.
 			
 			echo '<form id="createTimeReportForm" name="createTimeReportForm" action="include/timeReport/newTimeReportSave.php" method="post">
 					<input type="hidden" name="weekNumber" value="'.$year.''.$week.'">
@@ -328,7 +368,8 @@
 					
 		echo '</table>';
 		echo '</form>';
-		
+
+		echo '<div style="padding-bottom:25px">';
 		echo '<form name="nextnWeek" action="index.php" method="get">';
 		echo '<input name="content" type="hidden" value="chosenWeek">';
 			if($week == 52) {
@@ -343,6 +384,7 @@
 			}
 			echo '<input type="hidden" name="selectedWeek" value="'.$nextWeek.'">';
 			echo '<input type="hidden" name="selectedYear" value="'.$nextYear.'">';
+			echo '<input type="hidden" name="Add" value="0">';
 			echo '<input class="btn btn-default" type="submit"  value="Nästa v" style="float:right; margin-right:10px;"/>';
 		echo '</form>';
 		echo '<form name="lastWeek" action="index.php" method="get">';
@@ -359,8 +401,10 @@
 			}
 			echo '<input type="hidden" name="selectedWeek" value="'.$lastWeek.'">';
 			echo '<input type="hidden" name="selectedYear" value="'.$lastYear.'">';
+			echo '<input type="hidden" name="Add" value="0">';
 			echo '<input class="btn btn-default" type="submit"  value="Förra v" style="float:right; margin-right:10px;"/>';
 		echo '</form>';
+		echo '</div>';
 	
 		}
 ?>

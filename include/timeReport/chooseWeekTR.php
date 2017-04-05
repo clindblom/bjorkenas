@@ -15,7 +15,8 @@
 	$week = $date->format("W");
 	
 	echo '<form name="chosenWeek" action="index.php" method="get">';
-	echo '<input name="content" type="hidden" value="chosenWeek">';	
+	echo '<input name="content" type="hidden" value="chosenWeek">';
+	echo '<input name="Add" type="hidden" value="0">';		
 	echo '<table class="table" id="chooseWeekTable">';
 	
 		echo '<thead>';

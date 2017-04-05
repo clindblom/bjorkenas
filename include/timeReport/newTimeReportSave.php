@@ -39,12 +39,12 @@
 			$tr_SQLinsert .= "'".${"sattime".$s}."', '".${"sattrip".$s}."', '".${"suntime".$s}."', '".${"suntrip".$s}."') ";
 			
 			$tr_SQLinsert_query = mysqli_query($dbConnected, $tr_SQLinsert);			
-
-			header("Location: ../../index.php?content=chosenWeek&selectedWeek=".$week."&selectedYear=".$year);
 		
 		} else {
 			echo "<h2>Anslutning till databasen misslyckades!</h2>";
 		}	
 	}
+
+	header("Location: ../../index.php?content=chosenWeek&Add=0&selectedWeek=".$week."&selectedYear=".$year);
 
 ?>
