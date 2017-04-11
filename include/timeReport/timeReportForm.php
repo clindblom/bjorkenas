@@ -296,7 +296,7 @@
 		
 			echo '<thead>';
 				echo '<tr>';
-					echo '<th>Projekt</th>'; 
+					echo '<th>Arbetsorder</th>'; 
 					echo '<th colspan=2>Måndag</th>'; 
 					echo '<th colspan=2>Tisdag</th>';
 					echo '<th colspan=2>Onsdag</th>';
