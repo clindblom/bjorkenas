@@ -79,6 +79,12 @@
 	}
 
 	if($weekNoDB == $year.''.$week) {
+
+		echo '<form name="printTimeReport" name="printTimeReport" target="_blank" action="include/timeReport/printTimeReport.php" method="get">
+					<input type="hidden" name="week" value="'.$week.'">
+					<input type="hidden" name="year" value="'.$year.'">
+					<input class="btn btn-default" type="submit"  value="Skriv ut rapport" style="float:left; margin-right:10px;"/>
+				</form>';
 	
 		echo '<form id="createTimeReportForm" name="updateTimeReportForm" action="include/timeReport/timeReportUpdate.php" method="post">
 					<input type="hidden" name="weekNumber" value="'.$year.''.$week.'">
