@@ -16,7 +16,13 @@
 		//Time Report
 		$tr_SQLselect = "SELECT * FROM time_report where tr_week=".$year."".$week." AND tr_user=".$user;
 		$tr_SQLselect_Query = mysqli_query($dbConnected, $tr_SQLselect);
-		
+
+		//User
+		$user_SQLselect = "SELECT name FROM user where id=".$user;
+		$user_SQLselect_Query = mysqli_query($dbConnected, $user_SQLselect);
+		$userNameArray = mysqli_fetch_array($user_SQLselect_Query, MYSQLI_ASSOC);
+		$userName = $userNameArray['name'];
+
 		//TimeReport array to be presented.
 		$trData = array();
 		
@@ -193,7 +199,7 @@
 		$pdf->Rotate(270, 110, 130);
 		$pdf->SetFont('Arial','',8);
 		$pdf->Cell(40,35,'',0,1);
-		$pdf->Cell(50,15,utf8_decode('Tidsrapport vecka:'.$week.' '.$year),0,1);
+		$pdf->Cell(50,15,utf8_decode('Tidsrapport vecka:'.$week.' '.$year.' - '.$userName),0,1);
 		$pdf->SetFont('Arial','',10);
 		$pdf->trTable($header, $trData);
 		$pdf->trSum($trData);
