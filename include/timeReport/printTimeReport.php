@@ -43,7 +43,7 @@
 			if ($trRow['tr_project'] != 0) {
 				$orderNo = $projAssArray[$trRow['tr_project']];
 			} else {
-				$orderNo = 0;
+				$orderNo = "-";
 			}
 
 			$montime = $trRow['tr_montime'];
