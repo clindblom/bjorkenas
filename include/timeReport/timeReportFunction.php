@@ -7,7 +7,7 @@
 		mysqli_set_charset($dbConnected, 'utf8');
 		
 		if($dbConnected) {
-			$customer_SQLselect = "SELECT project_id, project_order_nr FROM project WHERE finished=0";
+			$customer_SQLselect = "SELECT project_id, project_order_nr, project_address FROM project WHERE finished=0";
 				
 			$customer_SQLselect_Query = mysqli_query($dbConnected, $customer_SQLselect);	
 				
@@ -19,13 +19,20 @@
 					while ($row = mysqli_fetch_array($customer_SQLselect_Query, MYSQLI_ASSOC)) {
 					    $ID = $row['project_id'];
 					    $projects = $row['project_order_nr'];
+					    $adress = $row['project_address'];
 	
 					    if ($currentIDvalue == $ID) { 
 					    	$selectedFlag = " selected";
+					    	$rendering .= '<option value="'.$ID.'" '.$selectedFlag.'>'.$projects.'</option>';
 					    } else { 
 					    	$selectedFlag = "";
+					    	if ($adress == "") {
+					    		$rendering .= '<option value="'.$ID.'" '.$selectedFlag.'>'.$projects.'</option>';
+					    	} else {
+					    		$rendering .= '<option value="'.$ID.'" '.$selectedFlag.'>'.$projects.' - '.$adress.'</option>';
+					    	}
 					    } 
-					    $rendering .= '<option value="'.$ID.'" '.$selectedFlag.'>'.$projects.'</option>';
+					    
 					}
 					$rendering .= '</select>';
 			
