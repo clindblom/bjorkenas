@@ -1,6 +1,0 @@
-<?php>
-
-echo '<h2>save time report</h2>';
-echo 'Måndag tid:'.$_POST['montime0'] ;
-
-<?>

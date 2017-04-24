@@ -17,18 +17,35 @@
 		$tr_SQLselect = "SELECT * FROM time_report where tr_week=".$year."".$week." AND tr_user=".$user;
 		$tr_SQLselect_Query = mysqli_query($dbConnected, $tr_SQLselect);
 
+		//Project Report
+		$proj_SQLselect = "SELECT project_id, project_order_nr FROM project WHERE finished=0";
+		$proj_SQLselect_Query = mysqli_query($dbConnected, $proj_SQLselect);
+
 		//User
 		$user_SQLselect = "SELECT name FROM user where id=".$user;
 		$user_SQLselect_Query = mysqli_query($dbConnected, $user_SQLselect);
 		$userNameArray = mysqli_fetch_array($user_SQLselect_Query, MYSQLI_ASSOC);
 		$userName = $userNameArray['name'];
 
+		//Project no to be presented.
+		$projAssArray = array();
+		while ($projRow = mysqli_fetch_array($proj_SQLselect_Query, MYSQLI_ASSOC)) {
+			$projId = $projRow['project_id'];
+			$projNo = $projRow['project_order_nr'];
+			$projAssArray += array($projId => $projNo);
+		}
+
 		//TimeReport array to be presented.
 		$trData = array();
-		
 		$trTempArray = array();
 		while ($trRow = mysqli_fetch_array($tr_SQLselect_Query, MYSQLI_ASSOC)) {
-			$orderNo = $trRow['tr_project'];
+
+			if ($trRow['tr_project'] != 0) {
+				$orderNo = $projAssArray[$trRow['tr_project']];
+			} else {
+				$orderNo = 0;
+			}
+
 			$montime = $trRow['tr_montime'];
 			$montrip = $trRow['tr_montrip'];
 			$tuetime = $trRow['tr_tuetime'];
