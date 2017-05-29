@@ -152,20 +152,20 @@
 		  			}
 			  		
 			  		echo '<input type="hidden" id="tr_id'.$t.'" name="tr_id'.$t.'" value="'.${"tr_id".$t}.'">';
-					echo '<td><input type="text" class="form-control" id="montime'.$t.'" name="montime'.$t.'" value="'.${"montime".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="montrip'.$t.'" name="montrip'.$t.'" value="'.${"montrip".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="tuetime'.$t.'" name="tuetime'.$t.'" value="'.${"tuetime".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="tuetrip'.$t.'" name="tuetrip'.$t.'" value="'.${"tuetrip".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="wentime'.$t.'" name="wentime'.$t.'" value="'.${"wentime".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="wentrip'.$t.'" name="wentrip'.$t.'" value="'.${"wentrip".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="thutime'.$t.'" name="thutime'.$t.'" value="'.${"thutime".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="thutrip'.$t.'" name="thutrip'.$t.'" value="'.${"thutrip".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="fritime'.$t.'" name="fritime'.$t.'" value="'.${"fritime".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="fritrip'.$t.'" name="fritrip'.$t.'" value="'.${"fritrip".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="sattime'.$t.'" name="sattime'.$t.'" value="'.${"sattime".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="sattrip'.$t.'" name="sattrip'.$t.'" value="'.${"sattrip".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="suntime'.$t.'" name="suntime'.$t.'" value="'.${"suntime".$t}.'"></td>';
-					echo '<td><input type="text" class="form-control" id="suntrip'.$t.'" name="suntrip'.$t.'" value="'.${"suntrip".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="montime'.$t.'" name="montime'.$t.'"'; if(${"montime".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"montime".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="montrip'.$t.'" name="montrip'.$t.'"'; if(${"montrip".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"montrip".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="tuetime'.$t.'" name="tuetime'.$t.'"'; if(${"tuetime".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"tuetime".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="tuetrip'.$t.'" name="tuetrip'.$t.'"'; if(${"tuetrip".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"tuetrip".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="wentime'.$t.'" name="wentime'.$t.'"'; if(${"wentime".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"wentime".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="wentrip'.$t.'" name="wentrip'.$t.'"'; if(${"wentrip".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"wentrip".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="thutime'.$t.'" name="thutime'.$t.'"'; if(${"thutime".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"thutime".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="thutrip'.$t.'" name="thutrip'.$t.'"'; if(${"thutrip".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"thutrip".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="fritime'.$t.'" name="fritime'.$t.'"'; if(${"fritime".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"fritime".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="fritrip'.$t.'" name="fritrip'.$t.'"'; if(${"fritrip".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"fritrip".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="sattime'.$t.'" name="sattime'.$t.'"'; if(${"sattime".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"sattime".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="sattrip'.$t.'" name="sattrip'.$t.'"'; if(${"sattrip".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"sattrip".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="suntime'.$t.'" name="suntime'.$t.'"'; if(${"suntime".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"suntime".$t}.'"></td>';
+					echo '<td><input type="text" class="form-control" id="suntrip'.$t.'" name="suntrip'.$t.'"'; if(${"suntrip".$t}!=0){ echo 'style="background-color:#F5F5F5"';} echo ' value="'.${"suntrip".$t}.'"></td>';
 				
 				echo '</tr>';
 			}			
