@@ -7,7 +7,7 @@
 		mysqli_set_charset($dbConnected, 'utf8');
 		
 		if($dbConnected) {
-			$customer_SQLselect = "SELECT project_id, project_order_nr, project_address FROM project WHERE finished=0";
+			$customer_SQLselect = "SELECT project_id, project_order_nr, project_address FROM project";
 				
 			$customer_SQLselect_Query = mysqli_query($dbConnected, $customer_SQLselect);	
 				
@@ -49,7 +49,7 @@
 		mysqli_set_charset($dbConnected, 'utf8');
 		
 		if($dbConnected) {
-			$customer_SQLselect = "SELECT project_id, project_order_nr FROM project WHERE finished=0";
+			$customer_SQLselect = "SELECT project_id, project_order_nr FROM project";
 				
 			$customer_SQLselect_Query = mysqli_query($dbConnected, $customer_SQLselect);	
 				
