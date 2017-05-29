@@ -18,7 +18,7 @@
 		$tr_SQLselect_Query = mysqli_query($dbConnected, $tr_SQLselect);
 
 		//Project Report
-		$proj_SQLselect = "SELECT project_id, project_order_nr FROM project WHERE finished=0";
+		$proj_SQLselect = "SELECT project_id, project_order_nr FROM project";
 		$proj_SQLselect_Query = mysqli_query($dbConnected, $proj_SQLselect);
 
 		//User
