@@ -7,7 +7,7 @@
 		mysqli_set_charset($dbConnected, 'utf8');
 		
 		if($dbConnected) {
-			$customer_SQLselect = "SELECT project_id, project_order_nr, project_address FROM project";
+			$customer_SQLselect = "SELECT project_id, project_order_nr, project_address, finished FROM project ORDER BY project_order_nr DESC";
 				
 			$customer_SQLselect_Query = mysqli_query($dbConnected, $customer_SQLselect);	
 				
@@ -20,6 +20,7 @@
 					    $ID = $row['project_id'];
 					    $projects = $row['project_order_nr'];
 					    $adress = $row['project_address'];
+					    $finished = $row['finished'];
 	
 					    if ($currentIDvalue == $ID) { 
 					    	$selectedFlag = " selected";
@@ -27,9 +28,17 @@
 					    } else { 
 					    	$selectedFlag = "";
 					    	if ($adress == "") {
-					    		$rendering .= '<option value="'.$ID.'" '.$selectedFlag.'>'.$projects.'</option>';
+					    		if ($finished == "0") {
+					    			$rendering .= '<option value="'.$ID.'" '.$selectedFlag.'>'.$projects.'</option>';
+					    		} else {
+					    			$rendering .= '<option value="'.$ID.'" '.$selectedFlag.' style="background-color:#F5F5F5">'.$projects.' - Avlutad</option>';
+					    		}
 					    	} else {
-					    		$rendering .= '<option value="'.$ID.'" '.$selectedFlag.'>'.$projects.' - '.$adress.'</option>';
+					    		if ($finished == "0") {
+					    			$rendering .= '<option value="'.$ID.'" '.$selectedFlag.'>'.$projects.' - '.$adress.'</option>';
+					    		} else {
+					    			$rendering .= '<option value="'.$ID.'" '.$selectedFlag.' style="background-color:#F5F5F5">'.$projects.' - '.$adress.' - Avlutad</option>';
+					    		}
 					    	}
 					    } 
 					    
