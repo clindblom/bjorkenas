@@ -12,7 +12,18 @@
 		$project_SQLselect = "SELECT * FROM project WHERE project_customer=".$customerID;
 		$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect); 	
 	
+		if ($detect->isMobile()) {
+			echo '<style>#customerLink {background: #A0A0A0;}</style>';
+		} else {
+			echo '<style>#customerLink {background: black;}</style>';
+		}
+
 		echo '<h2>Projekt för vald kund</h2>';
+
+		echo '<form id="customerForm" name="customerForm" action="index.php" method="get">
+					<input type="hidden" name="content" value="handleCustomer">
+					<input class="btn btn-default" type="submit"  value="Tillbaka" style="float:left; margin-right:10px"; />
+				</form>';
 		
 		echo '<table class="table" id="projectTable">';	
 		

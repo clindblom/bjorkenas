@@ -3,6 +3,12 @@
 include('showCustomerFunction.php');
 $customer = customerDropdown('');
 
+	if ($detect->isMobile()) {
+		echo '<style>#customerLink {background: #A0A0A0;}</style>';
+	} else {
+		echo '<style>#customerLink {background: black;}</style>';
+	}
+
 echo '<h2>Välj en kund att visa</h2>';
 
 echo	'<form id="showCustomerForm" name="showCustomerForm" action="index.php" method="get">
