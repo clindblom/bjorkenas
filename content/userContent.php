@@ -3,6 +3,8 @@
 	$dbSuccess = false;
 	$dbConnected = mysqli_connect($db['hostname'],$db['username'], $db['password'],$db['database']);
 	mysqli_set_charset($dbConnected, 'utf8');
+
+	$activeUser = $_COOKIE['userID'];
 	
 	if($dbConnected) {
 		
@@ -46,7 +48,11 @@
 			$mail = $row['mail'];
 			$phone = $row['phone'];		
 		echo '<tbody>';
-			echo '<tr>'; 
+			if ($activeUser == $id) {
+				echo '<tr style="background-color:#F5F5F5">';
+			} else {
+				echo '<tr>';
+			} 
 				echo '<td>'.$name.'</td>'; 
 				echo '<td>'.$username.'</td>';
 				echo '<td>'.$company.'</td>';
