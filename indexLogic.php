@@ -118,7 +118,8 @@
 			if (userAuthorised($dbConnected, $username, $password)) {
 				header("Location: index.php");
 			} else {
-				include('include/logInAndOut/loginForm.php');
+				//include('include/logInAndOut/loginForm.php');
+				header("Location: include/logInAndOut/loginForm.php");
 			}
 			
 		}
