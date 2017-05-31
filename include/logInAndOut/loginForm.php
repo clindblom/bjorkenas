@@ -1,4 +1,5 @@
 <?php
+	echo '<!DOCTYPE html>';
 	echo '<link href="css/signin.css" rel="stylesheet">';
 	echo '<div class="container">';
 		echo '<form class="form-signin" name="loginForm" action="index.php" method="post">';	
