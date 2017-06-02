@@ -107,6 +107,9 @@
 				    case "chosenWeek":
 				        $contentFile = "include/timeReport/timeReportForm.php";
 				        break;
+				    case "chosenWeekMobile":
+				        $contentFile = "include/timeReport/timeReportMobileForm.php";
+				        break;
 				}	// End of switch									
 							
 			}

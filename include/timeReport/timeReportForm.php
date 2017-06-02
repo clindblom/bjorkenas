@@ -106,8 +106,6 @@
 					echo '<th colspan=2>Fredag</th>';
 					echo '<th colspan=2>Lördag</th>';
 					echo '<th colspan=2>Söndag</th>';
-					echo '<th colspan=2></th>';
-					echo '<th colspan=2></th>';
 				echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -304,8 +302,6 @@
 					echo '<th colspan=2>Fredag</th>';
 					echo '<th colspan=2>Lördag</th>';
 					echo '<th colspan=2>Söndag</th>';
-					echo '<th colspan=2></th>';
-					echo '<th colspan=2></th>';
 				echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';

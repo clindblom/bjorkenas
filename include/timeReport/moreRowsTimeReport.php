@@ -1,4 +1,7 @@
 <?php
+	
+	include('../../config/Mobile_Detect.php');
+	$detect = new Mobile_Detect();
 
 	$user = $_COOKIE['userID'];
 	
@@ -7,6 +10,10 @@
 
 	$Add = 1;
 
-	header("Location: ../../index.php?content=chosenWeek&Add=".$Add."&selectedWeek=".$week."&selectedYear=".$year);
+	if ($detect->isMobile()) {
+		header("Location: ../../index.php?content=chosenWeekMobile&Add=".$Add."&selectedWeek=".$week."&selectedYear=".$year);
+	} else {
+		header("Location: ../../index.php?content=chosenWeek&Add=".$Add."&selectedWeek=".$week."&selectedYear=".$year);
+	}
 
 ?>
