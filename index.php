@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 		<link rel="icon" href="images/house-detective_blue.jpg" type="image/x-icon" />
 		
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 	
 	</head>
 	<body>
