@@ -5,8 +5,18 @@
 	mysqli_set_charset($dbConnected, 'utf8');
 	
 	if($dbConnected) {
+		$sorting = @$_GET['sort'];
+
+		if($sorting == "article") {
+			$material_SQLselect = "SELECT * FROM material ORDER BY article_name";
+		} else if ($sorting == "articleNo") {
+			$material_SQLselect = "SELECT * FROM material ORDER BY article_number";
+		} else if ($sorting == "price") {
+			$material_SQLselect = "SELECT * FROM material ORDER BY article_cost";
+		} else {
+			$material_SQLselect = "SELECT * FROM material";
+		}
 		
-		$material_SQLselect = "SELECT * FROM material";
 		$material_SQLselect_Query = mysqli_query($dbConnected, $material_SQLselect); 	
 	
 		if ($detect->isMobile()) {
@@ -23,10 +33,10 @@
 		echo '<table class="table" id="materialTable">';	
 	
 		echo '<thead>';
-			echo '<tr>'; 
-				echo '<th>Artikel</th>'; 
-				echo '<th>Artikel-nummer</th>';
-				echo '<th>Pris</th>';
+			echo '<tr>';
+				echo '<th><a href="index.php?content=handleMaterial&sort=article" style="color:black;'; if(@$_GET['sort'] == 'article') {echo 'text-decoration:underline;';} echo '">Artikel</a></th>';
+				echo '<th><a href="index.php?content=handleMaterial&sort=articleNo" style="color:black;'; if(@$_GET['sort'] == 'articleNo') {echo 'text-decoration:underline;';} echo '">Artikel-nummer</a></th>';
+				echo '<th><a href="index.php?content=handleMaterial&sort=price" style="color:black;'; if(@$_GET['sort'] == 'price') {echo 'text-decoration:underline;';} echo '">Pris</a></th>';
 				echo '<th></th>';
 				echo '<th></th>';
 			echo '</tr>';

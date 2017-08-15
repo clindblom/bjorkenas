@@ -7,8 +7,22 @@
 	$activeUser = $_COOKIE['userID'];
 	
 	if($dbConnected) {
+		$sorting = @$_GET['sort'];
 		
-		$user_SQLselect = "SELECT * FROM user";
+		if($sorting == "name") {
+			$user_SQLselect = "SELECT * FROM user ORDER BY name";
+		} else if ($sorting == "username") {
+			$user_SQLselect = "SELECT * FROM user ORDER BY username";
+		} else if ($sorting == "company") {
+			$user_SQLselect = "SELECT * FROM user ORDER BY company";
+		} else if ($sorting == "mail") {
+			$user_SQLselect = "SELECT * FROM user ORDER BY mail";
+		} else if ($sorting == "phone") {
+			$user_SQLselect = "SELECT * FROM user ORDER BY phone";
+		} else {
+			$user_SQLselect = "SELECT * FROM user";
+		}
+
 		$user_SQLselect_Query = mysqli_query($dbConnected, $user_SQLselect); 	
 		
 		if ($detect->isMobile()) {
@@ -28,12 +42,12 @@
 				</form>';
 		echo '<table class="table" id="userTable">';	
 		echo '<thead>';
-			echo '<tr>'; 
-				echo '<th>Namn</th>'; 
-				echo '<th>Användarnamn</th>';
-				echo '<th>Företag</th>';
-				echo '<th>Epost</th>';
-				echo '<th>Telefon</th>';
+			echo '<tr>';
+				echo '<th><a href="index.php?content=user&sort=name" style="color:black;'; if(@$_GET['sort'] == 'name') {echo 'text-decoration:underline;';} echo '">Namn</a></th>';
+				echo '<th><a href="index.php?content=user&sort=username" style="color:black;'; if(@$_GET['sort'] == 'username') {echo 'text-decoration:underline;';} echo '">Användarnamn</a></th>';
+				echo '<th><a href="index.php?content=user&sort=company" style="color:black;'; if(@$_GET['sort'] == 'company') {echo 'text-decoration:underline;';} echo '">Företag</a></th>';
+				echo '<th><a href="index.php?content=user&sort=mail" style="color:black;'; if(@$_GET['sort'] == 'mail') {echo 'text-decoration:underline;';} echo '">Epost</a></th>';
+				echo '<th><a href="index.php?content=user&sort=phone" style="color:black;'; if(@$_GET['sort'] == 'phone') {echo 'text-decoration:underline;';} echo '">Telefon</a></th>';
 				echo '<th></th>';
 				echo '<th></th>';
 			echo '</tr>';	

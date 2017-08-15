@@ -5,8 +5,22 @@
 	mysqli_set_charset($dbConnected, 'utf8');
 	
 	if($dbConnected) {
+		$sorting = @$_GET['sort'];
 		
-		$project_SQLselect = "SELECT * FROM project";
+		if($sorting == "orderNo") {
+			$project_SQLselect = "SELECT * FROM project ORDER BY project_order_nr";
+		} else if ($sorting == "address") {
+			$project_SQLselect = "SELECT * FROM project ORDER BY project_address";
+		} else if ($sorting == "startDate") {
+			$project_SQLselect = "SELECT * FROM project ORDER BY project_start_date";
+		} else if ($sorting == "customer") {
+			$project_SQLselect = "SELECT * FROM project ORDER BY project_customer";
+		} else if ($sorting == "user") {
+			$project_SQLselect = "SELECT * FROM project ORDER BY project_user";
+		} else {
+			$project_SQLselect = "SELECT * FROM project";
+		}
+
 		$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect);
 		
 		$showOnly = true;
@@ -26,17 +40,16 @@
 		
 		echo '<thead>';
 			echo '<tr>';
-				echo '<th>Arbetsorder</th>'; 
-				echo '<th>Adress</th>'; 
-				echo '<th>Startdatum</th>';
-				echo '<th>Kund</th>';
+				echo '<th><a href="index.php?content=createInvoice&sort=orderNo" style="color:black;'; if(@$_GET['sort'] == 'orderNo') {echo 'text-decoration:underline;';} echo '">Arbetsorder</a></th>';
+				echo '<th><a href="index.php?content=createInvoice&sort=address" style="color:black;'; if(@$_GET['sort'] == 'address') {echo 'text-decoration:underline;';} echo '">Adress</a></th>';
+				echo '<th><a href="index.php?content=createInvoice&sort=startDate" style="color:black;'; if(@$_GET['sort'] == 'startDate') {echo 'text-decoration:underline;';} echo '">Startdatum</a></th>'; 
+				echo '<th><a href="index.php?content=createInvoice&sort=customer" style="color:black;'; if(@$_GET['sort'] == 'customer') {echo 'text-decoration:underline;';} echo '">Kund</a></th>';
 				echo '<th>Tid</th>';
 				echo '<th>Resor</th>';
-				echo '<th>Utfört av</th>';
+				echo '<th><a href="index.php?content=createInvoice&sort=user" style="color:black;'; if(@$_GET['sort'] == 'user') {echo 'text-decoration:underline;';} echo '">Utfört av</a></th>';
 				echo '<th>Beskrivning</th>';
 				echo '<th></th>';
 				echo '<th></th>';
-				
 			echo '</tr>';
 		echo '</thead>';
 		echo '<tbody>';
@@ -92,9 +105,10 @@
 		echo '<script type="text/javascript">
 					function clearUrl() {
 						if(location.search.indexOf(\'reloaded=yes\') >= 0){
-							var host = "http://localhost/ownWork/bjorkenasBS/index.php";
+							var hostLocal = "http://localhost/ownWork/bjorkenasBS/index.php";
+							var hostPublic = "http://bjorkenas.org/index.php";
 							var search = "?content=createInvoice";
-							setTimeout(function(){window.location.href = host + search;}, 10);
+							setTimeout(function(){window.location.href = hostLocal + search;}, 10);
 						}
 					}
 					function reloadPage() {

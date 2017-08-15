@@ -5,10 +5,25 @@
 	mysqli_set_charset($dbConnected, 'utf8');
 	
 	if($dbConnected) {
-		$showOnly = false;		
+		$sorting = @$_GET['sort'];
+		$showOnly = false;
 		
-		$project_SQLselect = "SELECT * FROM project";
-		$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect); 	
+		if($sorting == "orderNo") {
+			$project_SQLselect = "SELECT * FROM project ORDER BY project_order_nr";
+		} else if ($sorting == "address") {
+			$project_SQLselect = "SELECT * FROM project ORDER BY project_address";
+		} else if ($sorting == "startDate") {
+			$project_SQLselect = "SELECT * FROM project ORDER BY project_start_date";
+		} else if ($sorting == "customer") {
+			$project_SQLselect = "SELECT * FROM project ORDER BY project_customer";
+		} else if ($sorting == "user") {
+			$project_SQLselect = "SELECT * FROM project ORDER BY project_user";
+		} else {
+			$project_SQLselect = "SELECT * FROM project";
+		}
+
+		$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect); 
+
 	if ($detect->isMobile()) {
 			echo '<style>#hPLink {background: #A0A0A0;}</style>';		
 		} else {
@@ -27,13 +42,13 @@
 		
 		echo '<thead>';
 			echo '<tr>';
-				echo '<th>Arbetsorder</th>'; 
-				echo '<th>Adress</th>'; 
-				echo '<th>Startdatum</th>';
-				echo '<th>Kund</th>';
+				echo '<th><a href="index.php?content=handleProject&sort=orderNo" style="color:black;'; if(@$_GET['sort'] == 'orderNo') {echo 'text-decoration:underline;';} echo '">Arbetsorder</a></th>';
+				echo '<th><a href="index.php?content=handleProject&sort=address" style="color:black;'; if(@$_GET['sort'] == 'address') {echo 'text-decoration:underline;';} echo '">Adress</a></th>';
+				echo '<th><a href="index.php?content=handleProject&sort=startDate" style="color:black;'; if(@$_GET['sort'] == 'startDate') {echo 'text-decoration:underline;';} echo '">Startdatum</a></th>'; 
+				echo '<th><a href="index.php?content=handleProject&sort=customer" style="color:black;'; if(@$_GET['sort'] == 'customer') {echo 'text-decoration:underline;';} echo '">Kund</a></th>';
 				echo '<th>Tid</th>';
 				echo '<th>Resor</th>';
-				echo '<th>Utfört av</th>';
+				echo '<th><a href="index.php?content=handleProject&sort=user" style="color:black;'; if(@$_GET['sort'] == 'user') {echo 'text-decoration:underline;';} echo '">Utfört av</a></th>';
 				echo '<th>Beskrivning</th>';
 				echo '<th></th>';
 				echo '<th></th>';
