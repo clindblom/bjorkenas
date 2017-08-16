@@ -15,14 +15,14 @@
 		} else if ($sorting == "startDate") {
 			$project_SQLselect = "SELECT * FROM project ORDER BY project_start_date";
 		} else if ($sorting == "customer") {
-			$project_SQLselect = "SELECT * FROM project ORDER BY project_customer";
+			$project_SQLselect = "SELECT project.* FROM project join customer ON project.project_customer = customer.customer_id ORDER BY customer.customer_company";
 		} else if ($sorting == "user") {
-			$project_SQLselect = "SELECT * FROM project ORDER BY project_user";
+			$project_SQLselect = "SELECT project.* FROM project join user ON project.project_user = user.id ORDER BY user.username";
 		} else {
 			$project_SQLselect = "SELECT * FROM project";
 		}
 
-		$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect); 
+		$project_SQLselect_Query = mysqli_query($dbConnected, $project_SQLselect);
 
 	if ($detect->isMobile()) {
 			echo '<style>#hPLink {background: #A0A0A0;}</style>';		
